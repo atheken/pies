@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Thrift</name>
+    </assembly>
+    <members>
+        <member name="F:Thrift.Transport.TServerSocket.server">
+            Underlying server with socket
+        </member>
+        <member name="F:Thrift.Transport.TServerSocket.port">
+            Port to listen on
+        </member>
+        <member name="F:Thrift.Transport.TServerSocket.clientTimeout">
+            Timeout for client sockets from accept
+        </member>
+        <member name="F:Thrift.Transport.TServerSocket.useBufferedSockets">
+            Whether or not to wrap new TSocket connections in buffers
+        </member>
+        <member name="M:Thrift.Transport.TServerSocket.#ctor(System.Net.Sockets.TcpListener)">
+            Creates a server socket from underlying socket object
+        </member>
+        <member name="M:Thrift.Transport.TServerSocket.#ctor(System.Net.Sockets.TcpListener,System.Int32)">
+            Creates a server socket from underlying socket object
+        </member>
+        <member name="M:Thrift.Transport.TServerSocket.#ctor(System.Int32)">
+            Creates just a port listening server socket
+        </member>
+        <member name="M:Thrift.Transport.TServerSocket.#ctor(System.Int32,System.Int32)">
+            Creates just a port listening server socket
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Thrift.Transport.TTransportFactory" -->
+        <member name="T:Thrift.Protocol.TBinaryProtocol.Factory">
+            Factory
+        </member>
+        <member name="F:Thrift.Server.TServer.processor">
+            Core processor
+        </member>
+        <member name="F:Thrift.Server.TServer.serverTransport">
+            Server transport
+        </member>
+        <member name="F:Thrift.Server.TServer.inputTransportFactory">
+            Input Transport Factory
+        </member>
+        <member name="F:Thrift.Server.TServer.outputTransportFactory">
+            Output Transport Factory
+        </member>
+        <member name="F:Thrift.Server.TServer.inputProtocolFactory">
+            Input Protocol Factory
+        </member>
+        <member name="F:Thrift.Server.TServer.outputProtocolFactory">
+            Output Protocol Factory
+        </member>
+        <member name="M:Thrift.Server.TServer.#ctor(Thrift.TProcessor,Thrift.Transport.TServerTransport)">
+            Default constructors.
+        </member>
+        <member name="M:Thrift.Server.TServer.Serve">
+            The run method fires up the server and gets things going.
+        </member>
+        <member name="T:Thrift.Server.TThreadedServer">
+            <summary>
+            Server that uses C# threads (as opposed to the ThreadPool) when handling requests
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Thrift.Server.TThreadedServer.Serve" -->
+        <member name="M:Thrift.Server.TThreadedServer.Execute">
+            <summary>
+            Loops on processing a client forever
+            threadContext will be a TTransport instance
+            </summary>
+            <param name="threadContext"></param>
+        </member>
+        <member name="M:Thrift.Protocol.TBase.Read(Thrift.Protocol.TProtocol)">
+            
+             Reads the TObject from the given input protocol.
+            
+        </member>
+        <member name="M:Thrift.Protocol.TBase.Write(Thrift.Protocol.TProtocol)">
+            
+             Writes the objects out to the protocol
+            
+        </member>
+        <member name="T:Thrift.Server.TThreadPoolServer">
+            <summary>
+            Server that uses C# built-in ThreadPool to spawn threads when handling requests
+            </summary>
+        </member>
+        <member name="M:Thrift.Server.TThreadPoolServer.Serve">
+            <summary>
+            Use new ThreadPool thread for each new client connection
+            </summary>
+        </member>
+        <member name="M:Thrift.Server.TThreadPoolServer.Execute(System.Object)">
+            <summary>
+            Loops on processing a client forever
+            threadContext will be a TTransport instance
+            </summary>
+            <param name="threadContext"></param>
+        </member>
+        <member name="T:Thrift.Protocol.TJSONProtocol">
+             <summary>
+             JSON protocol implementation for thrift.
+            
+             This is a full-featured protocol supporting Write and Read.
+            
+             Please see the C++ class header for a detailed description of the
+             protocol's wire format.
+            
+             Adapted from the Java version.
+             </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.PushContext(Thrift.Protocol.TJSONProtocol.JSONBaseContext)">
+            <summary>
+             Push a new JSON context onto the stack.
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.PopContext">
+            <summary>
+             Pop the last JSON context off the stack
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.#ctor(Thrift.Transport.TTransport)">
+            <summary>
+             TJSONProtocol Constructor
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.ReadJSONSyntaxChar(System.Byte[])">
+            <summary>
+             Read a byte that must match b[0]; otherwise an excpetion is thrown.
+             Marked protected to avoid synthetic accessor in JSONListContext.Read
+             and JSONPairContext.Read
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.HexVal(System.Byte)">
+            <summary>
+             Convert a byte containing a hex char ('0'-'9' or 'a'-'f') into its
+             corresponding hex value
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.HexChar(System.Byte)">
+            <summary>
+             Convert a byte containing a hex value to its corresponding hex character
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.WriteJSONString(System.Byte[])">
+            <summary>
+             Write the bytes in array buf as a JSON characters, escaping as needed
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.WriteJSONInteger(System.Int64)">
+            <summary>
+             Write out number as a JSON value. If the context dictates so, it will be
+             wrapped in quotes to output as a JSON string.
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.WriteJSONDouble(System.Double)">
+            <summary>
+             Write out a double as a JSON value. If it is NaN or infinity or if the
+             context dictates escaping, Write out as JSON string.
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.WriteJSONBase64(System.Byte[])">
+            <summary>
+             Write out contents of byte array b as a JSON string with base-64 encoded
+             data
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.ReadJSONString(System.Boolean)">
+            <summary>
+             Read in a JSON string, unescaping as appropriate.. Skip Reading from the
+             context if skipContext is true.
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.IsJSONNumeric(System.Byte)">
+            <summary>
+             Return true if the given byte could be a valid part of a JSON number.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Thrift.Protocol.TJSONProtocol.ReadJSONNumericChars" -->
+        <member name="M:Thrift.Protocol.TJSONProtocol.ReadJSONInteger">
+            <summary>
+             Read in a JSON number. If the context dictates, Read in enclosing quotes.
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.ReadJSONDouble">
+            <summary>
+             Read in a JSON double value. Throw if the value is not wrapped in quotes
+             when expected or if wrapped in quotes when not expected.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Thrift.Protocol.TJSONProtocol.ReadJSONBase64" -->
+        <member name="T:Thrift.Protocol.TJSONProtocol.Factory">
+            <summary>
+            Factory for JSON protocol objects
+            </summary>
+        </member>
+        <member name="T:Thrift.Protocol.TJSONProtocol.JSONBaseContext">
+            <summary>
+             Base class for tracking JSON contexts that may require
+             inserting/Reading additional JSON syntax characters
+             This base context does nothing.
+            </summary>
+        </member>
+        <member name="T:Thrift.Protocol.TJSONProtocol.JSONListContext">
+            <summary>
+             Context for JSON lists. Will insert/Read commas before each item except
+             for the first one
+            </summary>
+        </member>
+        <member name="T:Thrift.Protocol.TJSONProtocol.JSONPairContext">
+            <summary>
+             Context for JSON records. Will insert/Read colons before the value portion
+             of each record pair, and commas before each key except the first. In
+             addition, will indicate that numbers in the key position need to be
+             escaped in quotes (since JSON keys must be strings).
+            </summary>
+        </member>
+        <member name="T:Thrift.Protocol.TJSONProtocol.LookaheadReader">
+            <summary>
+             Holds up to one byte from the transport
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.LookaheadReader.Read">
+            <summary>
+             Return and consume the next byte to be Read, either taking it from the
+             data buffer if present or getting it from the transport otherwise.
+            </summary>
+        </member>
+        <member name="M:Thrift.Protocol.TJSONProtocol.LookaheadReader.Peek">
+            <summary>
+             Return the next byte to be Read without consuming, filling the data
+             buffer if it has not been filled alReady.
+            </summary>
+        </member>
+        <member name="T:Thrift.Server.TSimpleServer">
+            <summary>
+            Simple single-threaded server for testing
+            </summary>
+        </member>
+    </members>
+</doc>

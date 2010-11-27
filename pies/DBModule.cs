@@ -7,13 +7,13 @@ namespace pies
 	{
 		public DBModule ()
 		{
-			
+			Get("/read/(?<docid>[0-9]+)/",this);
 		}
 		
-		public void Read(IManosContext ctx)
+		public void Read(PiesApp app, IManosContext ctx, int docid)
 		{
 			//don't do anything special yet.
-			ctx.Response.End(BitConverter.GetBytes(42));
+			ctx.Response.End(BitConverter.GetBytes(docid));
 		}
 	}
 }

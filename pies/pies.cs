@@ -1,6 +1,8 @@
 
 using Manos;
+using Manos.Http;
 using System;
+using System.Linq;
 
 namespace pies {
 
@@ -8,7 +10,18 @@ namespace pies {
 
 		public PiesApp ()
 		{
-			Route("/DB",new DBModule());
 		}
+		
+		[Get("/echo/(?<value>.+?)/(?<id>.+?)/")]
+		public void Echo(IManosContext ctx, String value, int id)
+		{
+			ctx.Response.SetHeader("Content-Type","text/html");
+			for(; id > 0; id--)
+			{
+				ctx.Response.Write(value + "<br/>");
+			}
+			ctx.Response.End();
+		}
+		
 	}
 }
